@@ -1,38 +1,122 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</head>
 
-<h1>Eat Da Burger!</h1>
-<br>
+<body>
+  <p style="margin: 0 auto; text-align:center;"><img style="width:20%; height:30%; "
+      src="https://i.pinimg.com/originals/4f/53/fd/4f53fd7e61a5daf4c1f49b5d6e1898e5.jpg" alt="burger"></p>
+  <span>
+    <h1 style="text-align: center;">Eat A Burger ||       
+       <button id="a"style="margin: 20px;" class="btn btn-warning btn-lg" type="button" data-toggle="collapse"
+          data-target=".multi-collapse" aria-expanded="false" aria-controls="avail fav">Explore</button>
+   </h1>
+  </span>
+  
+   <p style="text-align: center;">
+           <button id="e" type="button" style="margin: 10px;" class="btn btn-outline-dark btn-lg" data-toggle="modal" data-target="#addburg"> Add A
+        Burger</button>
+        <button id="b"style="margin: 10px;" type="button" class="btn btn-outline-dark btn-lg" data-toggle="collapse"
+          data-target="#avail" aria-expanded="false" aria-controls="avail">Menu</button>
+        <button id="c" style="margin: 10px;" class="btn btn-outline-dark btn-lg" type="button" data-toggle="collapse"
+          data-target="#fav" aria-expanded="false" aria-controls="fav">Fan Faves</button>
+      </p>
+      
+  <div id="burgbod" class="card text-center" style="display:none; margin-left: 250px;margin-right: 250px;    padding: 20px;
+  border:2px solid black; border-radius: 5px, 5px, 95px, 95px;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <div class="collapse multi-collapse" id="avail">
+            <div class="card"     style='border:4px double orange;'
+>
+              <div class="card-body">
+                <h3>Menu</h3>
+                <hr>
+                <ul>
+                  {{#each burger}}
+                  {{#unless devoured}}
+                  {{> burger/burger-block devoured=true}}
+                  {{/unless}}
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="collapse multi-collapse" id="fav">
+            <div class="card" style='border:4px double orange;'>
+              <div class="card-body">
+                <h3>Fan Favorites</h3>
+                <hr>
+                <ul>
+                  {{#each burger}}
+                  {{#if devoured}}
+                  {{> burger/burger-block devoured=false}}
+                  {{/if}}
+                  {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+          </p>
+        </div>
+      </div>
 
-<h3>Burgers Available</h3>
-<ul>
-  {{#each burger}}
-    {{#unless devoured}}
-      {{> burger/burger-block devoured=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+      <!--add burger modal-->
+      <div class="modal fade" id="addburg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4>DIDN'T FIND YOUR SOULMEAT? </h4> <button style="margin-left: 15px;" id="f"type="button" class="close"
+                  data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <h3 class="modal-title" id="exampleModalLongTitle">
+                Add Your Own Burger!
+              </h3>
+              <div class="modal-body">
+                <form class="create-form">
+                  <div class="form-group">
+                    <label for="burg">Burger Name:</label>
+                    <input type="text" id="burg" name="name">
+                  </div>
 
+                  <div class="form-group">
+                    <input class=".eatburger" type="radio" name="devoured" value="0"> Add To Menu
+                  </div>
 
-<h3>Fan Favorites</h3>
-<ul>
-  {{#each burger}}
-    {{#if devoured}}
-      {{> burger/burger-block devoured=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button id="g" type="submit" class="btn btn-secondary">Add Burger</button>
+                <button id="h" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+</body>
+<script type="text/javascript">
+$("#a, #b, #c, #e, #f, #h").on('click', function(event){
+  event.preventDefault();
+$("#burgbod").toggle();
+})
 
-  <div class="form-group">
-    <label for="burg">Burger:</label>
-    <input type="text" id="burg" name="name">
-  </div>
-
-  <div class="form-group">
-    <input type="radio" name="devoured" value="1" checked> Devour?<br>
-    <input type="radio" name="devoured" value="0"> Add To Menu
-  </div>
-
-  <button type="submit">Add Burger</button>
-</form>
+</script>

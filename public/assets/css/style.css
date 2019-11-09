@@ -1,7 +1,10 @@
+*{
+  margin:0 auto;
+}
 li {
     padding: 5px;
     margin: 5px;
-    background: #faebd7;
+    border:4px;
   }
   
   .label {
