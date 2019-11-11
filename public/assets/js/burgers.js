@@ -16,18 +16,18 @@ $(function() {
       function() {
         console.log("changed eaten to", eaten);
         // Reload the page to get the updated list
-        location.reload();
+        //location.reload();
       }
     );
   });
 
-  $(".create-form").on("submit", function(event) {
+  $("#g").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var eaten = {
       name: $("#burg").val().trim(),
-      devoured: $("[name=eaten]:checked").val().trim()
+      devoured: $("[name=devoured]:checked").val().trim()
     };
 
     // Send the POST request.
@@ -38,7 +38,7 @@ $(function() {
       function() {
         console.log("created new burger");
         // Reload the page to get the updated list
-        location.reload();
+       // location.reload();
       }
     );
   });
@@ -53,7 +53,7 @@ $(function() {
       function() {
         console.log("deleted burger", id);
         // Reload the page to get the updated list
-        location.reload();
+        //location.reload();
       }
     );
   });
