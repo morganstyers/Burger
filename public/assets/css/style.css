@@ -2,8 +2,7 @@
   margin:0 auto;
 }
 li {
-    padding: 5px;
-    margin: 5px;
+  padding:10px;
     border:4px;
   }
   
@@ -14,10 +13,41 @@ li {
   .create-update-form {
     padding: 5px;
     margin: 5px;
-    background: aqua;
   }
   
   .form-group {
     margin-bottom: 5px;
   }
+  #butt{
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px #999;
+  margin: 5px;
+  align-self: stretch;
+}
+
+#butt:hover {background-color:orangered}
+
+#butt:active {
+  background-color: orangered;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+#title{
+  color: orange;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+font-weight: 500;}
+#called{
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 20px;
   
+}
